@@ -1,16 +1,20 @@
 package net.angrycode.core.network;
 
+import java.util.Map;
+
 /**
  * Created by lancelot on 2017/7/8.
  */
 
 public class SimpleTextRequest extends BaseTextRequest<String> {
-    public SimpleTextRequest() {
+
+    public SimpleTextRequest(Map<String, String> params) {
+        addParams(params);
     }
 
     @Override
     public String getUrl() {
-        return null;
+        return "https://raw.githubusercontent.com/wecodexyz/Componentization/master/README.md";
     }
 
     @Override

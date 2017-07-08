@@ -34,8 +34,15 @@ public abstract class Request implements IRequest {
     @Override
     public void setParams(Map<String, String> params) {
         if (params != null) {
+            mParams.clear();
             mParams.putAll(params);
         }
+    }
+
+    @Override
+    public void addParams(Map<String, String> params) {
+        if (params != null)
+            mParams.putAll(params);
     }
 
     @Override

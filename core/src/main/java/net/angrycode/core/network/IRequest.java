@@ -19,6 +19,8 @@ public interface IRequest {
 
     void setParams(Map<String, String> params);
 
+    void addParams(Map<String, String> params);
+
     void putParam(String key, String value);
 
     String getUrl();

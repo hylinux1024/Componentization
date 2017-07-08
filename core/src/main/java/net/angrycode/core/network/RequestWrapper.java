@@ -37,12 +37,12 @@ public abstract class RequestWrapper extends Request {
     @Override
     public Pair<Integer, String> request() {
         Pair<Integer, String> result = new Pair<>(ERROR_NETWORK, "");
-        okhttp3.Request request = requestBuilder().build();
+        okhttp3.Request request = null;
 
-        if (getHttpMethod() == HttpMethod.GET) {
-            requestBuilder().url(getUrlWithParams());
-        } else if (getHttpMethod() == HttpMethod.POST) {
-            requestBuilder().url(getUrl()).post(requestBody());
+        if (getHttpMethod() == HttpMethod.POST) {
+            request = requestBuilder().url(getUrl()).post(requestBody()).build();
+        } else {
+            request = requestBuilder().url(getUrlWithParams()).build();
         }
         try {
             Response response = mClient.newCall(request).execute();
