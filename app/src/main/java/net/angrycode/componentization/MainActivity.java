@@ -30,8 +30,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         textView = (TextView) findViewById(R.id.tv_content);
-        request = new SimpleTextRequest(null);
-        request.doRequest()
+        request = new SimpleTextRequest(this, null);
+        request.request()
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<String>() {

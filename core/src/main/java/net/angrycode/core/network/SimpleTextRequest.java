@@ -1,5 +1,7 @@
 package net.angrycode.core.network;
 
+import android.content.Context;
+
 import java.util.Map;
 
 /**
@@ -8,7 +10,8 @@ import java.util.Map;
 
 public class SimpleTextRequest extends BaseTextRequest<String> {
 
-    public SimpleTextRequest(Map<String, String> params) {
+    public SimpleTextRequest(Context context, Map<String, String> params) {
+        super(context);
         addParams(params);
     }
 
@@ -23,12 +26,12 @@ public class SimpleTextRequest extends BaseTextRequest<String> {
     }
 
     @Override
-    String onRequestFinish(String result) {
+    protected String onRequestFinish(String result) {
         return result;
     }
 
     @Override
-    String onRequestError(int code, String message) {
+    protected String onRequestError(int code, String message) {
         return message;
     }
 }

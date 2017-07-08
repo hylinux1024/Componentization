@@ -25,7 +25,7 @@ public interface IRequest {
 
     String getUrl();
 
-    Pair<Integer, String> request();
+    Pair<Integer, String> doRequest();
 
     boolean isSupportCache();
 

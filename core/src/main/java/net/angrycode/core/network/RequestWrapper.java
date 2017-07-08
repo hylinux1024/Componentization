@@ -1,14 +1,24 @@
 package net.angrycode.core.network;
 
+import android.content.Context;
+import android.support.annotation.Nullable;
 import android.util.Log;
 import android.util.Pair;
 
+import java.io.File;
 import java.io.IOException;
+import java.lang.ref.WeakReference;
 import java.net.InetSocketAddress;
 import java.net.Proxy;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import okhttp3.Cache;
+import okhttp3.Cookie;
+import okhttp3.CookieJar;
 import okhttp3.FormBody;
+import okhttp3.HttpUrl;
+import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
 import okhttp3.Response;
@@ -20,22 +30,33 @@ import okhttp3.Response;
 
 public abstract class RequestWrapper extends Request {
 
-    static final int ERROR_NETWORK = 404;
+    protected static final int ERROR_NETWORK = 404;
+
+    protected static final int CACHE_SIZE = 10 * 1024 * 1024; // 10 MiB
+
+    private WeakReference<Context> mContextRef;
 
     OkHttpClient mClient;
     Proxy mProxy;
 
-    public RequestWrapper() {
-        mClient = new OkHttpClient.Builder()
+    Cache mCache;
+
+    public RequestWrapper(Context context) {
+        mContextRef = new WeakReference<>(context);
+        if (isSupportCache()) {
+            mCache = new Cache(context.getCacheDir(), CACHE_SIZE);
+        }
+        OkHttpClient.Builder builder = new OkHttpClient.Builder()
                 .connectTimeout(30, TimeUnit.SECONDS)
                 .readTimeout(30, TimeUnit.SECONDS)
                 .writeTimeout(30, TimeUnit.SECONDS)
                 .proxy(mProxy)
-                .build();
+                .cache(mCache);
+        mClient = builder.build();
     }
 
     @Override
-    public Pair<Integer, String> request() {
+    public Pair<Integer, String> doRequest() {
         Pair<Integer, String> result = new Pair<>(ERROR_NETWORK, "");
         okhttp3.Request request = null;
 
@@ -82,5 +103,8 @@ public abstract class RequestWrapper extends Request {
         mProxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress(host, port));
     }
 
+    public @Nullable Context getContext() {
+        return mContextRef.get();
+    }
 
 }

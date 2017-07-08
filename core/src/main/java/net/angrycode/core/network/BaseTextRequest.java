@@ -1,5 +1,6 @@
 package net.angrycode.core.network;
 
+import android.content.Context;
 import android.util.Pair;
 
 import org.reactivestreams.Publisher;
@@ -19,15 +20,15 @@ import io.reactivex.functions.Function;
 
 public abstract class BaseTextRequest<T> extends RequestWrapper {
 
-    public BaseTextRequest() {
-
+    public BaseTextRequest(Context context) {
+        super(context);
     }
 
-    public Flowable<T> doRequest() {
+    public Flowable<T> request() {
         return Flowable.fromCallable(new Callable<Pair<Integer, String>>() {
             @Override
             public Pair<Integer, String> call() throws Exception {
-                Pair<Integer, String> result = request();
+                Pair<Integer, String> result = doRequest();
                 return result;
             }
         }).flatMap(new Function<Pair<Integer, String>, Publisher<T>>() {
@@ -42,7 +43,12 @@ public abstract class BaseTextRequest<T> extends RequestWrapper {
 
     }
 
-    abstract T onRequestFinish(String result);
+    @Override
+    public boolean isSupportCache() {
+        return true;
+    }
 
-    abstract T onRequestError(int code, String message);
+    protected abstract T onRequestFinish(String result);
+
+    protected abstract T onRequestError(int code, String message);
 }
