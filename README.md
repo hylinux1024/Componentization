@@ -15,11 +15,11 @@
 
 ![App 架构图][1]
 
-自上而下将 App 分为：
+自下而上将 App 分为：
 
-* **应用层**
-* **业务层**
 * **内核层**
+* **业务层**
+* **应用层**
 
 #### 内核层
 
@@ -101,7 +101,7 @@ AuthApi.authorize(context,userId,password).onAuthorizeFinished(
 
 顾名思义，这一层是对整个 App 的整合，也是 App 的入口。这里有 **Main** 和 **Dev**。其中 **Main** 是对各个业务组件的整合，是最终打包的产品的上层应用。而组件入口是独立运行和调试各个组件的子应用。
 
-**Dev** 在 Android Studiao 中是对应一个 **Application** 。在 gradle 中配置为
+**Dev** 在 Android Studio 中是对应一个 **Application** 。在 gradle 中配置为
 
 ```groovy
 apply plugin: 'com.android.application'
@@ -117,7 +117,8 @@ dependencies {
 }
 ```
 
-
+这就是一个大概的思路，可以看出这个框架关键的部分是在于**业务层**的分离。需要把原来项目中的**基础模块**抽取出来，放在**内核层**中。那么下一步就开始构建我们的内核层组件。可持续关注 [wecodexyz/Componentization][3] 项目的更新。
 
 [1]:http://angrycode.qiniudn.com/App%E6%9E%B6%E6%9E%84%E5%9B%BE.png	"App 架构图"
 [2]:https://github.com/alibaba/ARouter	"ARouter"
+[3]:https://github.com/wecodexyz/Componentization	"Componentization"
