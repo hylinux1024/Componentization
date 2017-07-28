@@ -11,7 +11,7 @@ import java.util.List;
 import io.reactivex.Observable;
 
 /**
- * Created by huangyanglin on 2017/7/28.
+ * Created by wecodexyz on 2017/7/28.
  */
 
 public class RepositoryFactory implements IDataSource<Data> {
