@@ -1,0 +1,13 @@
+ext {
+    //Version
+    supportLibrary = '25.3.1'
+
+    //libraries dependencies
+    supportDependencies = [
+            design           : "com.android.support:design:${supportLibrary}",
+            recyclerView     : "com.android.support:recyclerview-v7:${supportLibrary}",
+            cardView         : "com.android.support:cardview-v7:${supportLibrary}",
+            appCompat        : "com.android.support:appcompat-v7:${supportLibrary}",
+            supportAnnotation: "com.android.support:support-annotations:${supportLibrary}",
+    ]
+}

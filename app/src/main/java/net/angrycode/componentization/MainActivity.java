@@ -6,9 +6,14 @@ import android.util.Log;
 import android.widget.TextView;
 
 import net.angrycode.core.network.SimpleTextRequest;
+import net.angrycode.data.repository.Data;
+import net.angrycode.data.repository.RepositoryFactory;
+import net.angrycode.data.repository.local.LocalRepository;
+import net.angrycode.data.repository.remote.RemoteRepository;
 
 import org.reactivestreams.Publisher;
 
+import java.util.List;
 import java.util.concurrent.Callable;
 
 import io.reactivex.Flowable;
@@ -30,14 +35,33 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         textView = (TextView) findViewById(R.id.tv_content);
-        request = new SimpleTextRequest(this, null);
-        request.request()
-                .subscribeOn(Schedulers.computation())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<String>() {
+//        request = new SimpleTextRequest(this, null);
+//        request.request()
+//                .subscribeOn(Schedulers.computation())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(new Consumer<String>() {
+//                    @Override
+//                    public void accept(@NonNull String s) throws Exception {
+//                        textView.setText(s);
+//                    }
+//                }, new Consumer<Throwable>() {
+//                    @Override
+//                    public void accept(@NonNull Throwable throwable) throws Exception {
+//                        textView.setText(throwable.getMessage());
+//                    }
+//                });
+        Flowable.fromCallable(new Callable<List<Data>>() {
+            @Override
+            public List<Data> call() throws Exception {
+                List<Data> dataList = RepositoryFactory.get().queryAll();
+                return dataList;
+            }
+        }).observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(new Consumer<List<Data>>() {
                     @Override
-                    public void accept(@NonNull String s) throws Exception {
-                        textView.setText(s);
+                    public void accept(@NonNull List<Data> datas) throws Exception {
+                        textView.setText("data size:" + datas.size());
                     }
                 }, new Consumer<Throwable>() {
                     @Override
