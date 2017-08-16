@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">core</string>
+    <string name="error_network">网络好像有点问题哦T_T</string>
 </resources>
