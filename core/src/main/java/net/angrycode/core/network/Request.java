@@ -51,6 +51,11 @@ public abstract class Request implements IRequest {
     }
 
     @Override
+    public void putParam(String key, int value) {
+        mParams.put(key, String.valueOf(value));
+    }
+
+    @Override
     public void removeCookie() {
         mCookie = null;
     }

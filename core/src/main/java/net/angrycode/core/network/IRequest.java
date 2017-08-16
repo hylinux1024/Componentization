@@ -23,6 +23,7 @@ public interface IRequest {
 
     void putParam(String key, String value);
 
+    void putParam(String key, int value);
     String getUrl();
 
     Pair<Integer, String> doRequest();
