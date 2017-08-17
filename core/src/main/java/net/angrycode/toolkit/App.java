@@ -1,4 +1,4 @@
-package net.angrycode.utils;
+package net.angrycode.toolkit;
 
 import android.app.Application;
 import android.util.Log;

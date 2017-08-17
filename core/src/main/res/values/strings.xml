@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">core</string>
+
     <string name="error_network">网络好像有点问题哦T_T</string>
+    <string name="error_app_not_install">应用未安装</string>
 </resources>
