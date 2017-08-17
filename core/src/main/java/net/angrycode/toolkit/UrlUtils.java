@@ -22,4 +22,13 @@ public class UrlUtils {
         }
         Toast.makeText(context, R.string.error_app_not_install, Toast.LENGTH_SHORT).show();
     }
+
+    /**
+     * 打开网址
+     */
+    public static void openUrl(Context context, String url) {
+        Uri uri = Uri.parse(url);
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        context.startActivity(intent);
+    }
 }
