@@ -12,7 +12,7 @@ public interface IView<T> {
     /**
      * 请求开始
      */
-    void onStart();
+    void onBegin();
 
     /**
      * 请求结束

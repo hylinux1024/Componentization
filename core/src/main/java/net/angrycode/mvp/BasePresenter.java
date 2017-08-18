@@ -8,7 +8,7 @@ import net.angrycode.core.R;
  * Created by wecodexyz on 2017/8/16.
  */
 
-public class BasePresenter<T extends IView> implements IPresenter {
+public abstract class BasePresenter<T extends IView> implements IPresenter {
 
     public static final int ERROR_RX = 2000;
 
