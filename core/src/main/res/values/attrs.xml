@@ -2,7 +2,15 @@
 <resources>
     <declare-styleable name="CheckedImageView">
         <attr name="ImageChecked" format="boolean" />
+        <!--普通状态icon-->
         <attr name="ImageNormalState" format="reference" />
+        <!--选中状态icon-->
         <attr name="ImageCheckedState" format="reference" />
+    </declare-styleable>
+    <declare-styleable name="QuickClearEditText">
+        <!--是否允许使用快速清除功能-->
+        <attr name="quickClear" format="boolean" />
+        <!--清除按钮图标-->
+        <attr name="quickClearIcon" format="reference" />
     </declare-styleable>
 </resources>

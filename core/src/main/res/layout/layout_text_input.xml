@@ -12,5 +12,7 @@
     app:divider="@drawable/shape_divider"
     app:showDividers="middle">
 
-    <EditText style="@style/CommonTextInputStyle" />
+    <EditText
+        android:hint="Password"
+        style="@style/CommonTextInputStyle" />
 </android.support.v7.widget.LinearLayoutCompat>

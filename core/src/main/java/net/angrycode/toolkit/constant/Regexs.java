@@ -1,6 +1,6 @@
 package net.angrycode.toolkit.constant;
 
-public final class RegexConstants {
+public final class Regexs {
 
     /**
      * 正则：手机号（简单）

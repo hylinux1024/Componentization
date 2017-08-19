@@ -6,7 +6,6 @@ import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
-import android.view.ViewDebug;
 
 import net.angrycode.core.R;
 
@@ -53,7 +52,6 @@ public class CheckedImageView extends AppCompatImageView {
         setChecked(!mChecked);
     }
 
-    @ViewDebug.ExportedProperty
     public boolean isChecked() {
         return mChecked;
     }
