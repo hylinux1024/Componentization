@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="color_selected">#E5E5E5</color>
+    <color name="color_divider">#ebebeb</color>
 </resources>
