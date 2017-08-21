@@ -10,6 +10,7 @@ import net.angrycode.data.repository.Data;
 import net.angrycode.data.repository.RepositoryFactory;
 import net.angrycode.data.repository.local.LocalRepository;
 import net.angrycode.data.repository.remote.RemoteRepository;
+import net.angrycode.toolkit.view.SimpleDrawingView;
 
 import org.reactivestreams.Publisher;
 
@@ -34,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        textView = (TextView) findViewById(R.id.tv_content);
+//        textView = (TextView) findViewById(R.id.tv_content);
 //        request = new SimpleTextRequest(this, null);
 //        request.request()
 //                .subscribeOn(Schedulers.computation())
@@ -50,25 +51,25 @@ public class MainActivity extends AppCompatActivity {
 //                        textView.setText(throwable.getMessage());
 //                    }
 //                });
-        Flowable.fromCallable(new Callable<List<Data>>() {
-            @Override
-            public List<Data> call() throws Exception {
-                List<Data> dataList = RepositoryFactory.get().queryAll();
-                return dataList;
-            }
-        }).observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
-                .subscribe(new Consumer<List<Data>>() {
-                    @Override
-                    public void accept(@NonNull List<Data> datas) throws Exception {
-                        textView.setText("data size:" + datas.size());
-                    }
-                }, new Consumer<Throwable>() {
-                    @Override
-                    public void accept(@NonNull Throwable throwable) throws Exception {
-                        textView.setText(throwable.getMessage());
-                    }
-                });
+//        Flowable.fromCallable(new Callable<List<Data>>() {
+//            @Override
+//            public List<Data> call() throws Exception {
+//                List<Data> dataList = RepositoryFactory.get().queryAll();
+//                return dataList;
+//            }
+//        }).observeOn(AndroidSchedulers.mainThread())
+//                .subscribeOn(Schedulers.io())
+//                .subscribe(new Consumer<List<Data>>() {
+//                    @Override
+//                    public void accept(@NonNull List<Data> datas) throws Exception {
+//                        textView.setText("data size:" + datas.size());
+//                    }
+//                }, new Consumer<Throwable>() {
+//                    @Override
+//                    public void accept(@NonNull Throwable throwable) throws Exception {
+//                        textView.setText(throwable.getMessage());
+//                    }
+//                });
 //        Flowable.just("one", "two", "three", "four", "five", "six")
 //                .subscribeOn(Schedulers.computation())
 //                .observeOn(Schedulers.single())

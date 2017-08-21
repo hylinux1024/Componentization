@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Componentization</string>
+    <string name="feedback_label">
+  <![CDATA[
+    Please <a href="http://highlight.com">let us know</a> if you have feedback on this or if
+    you would like to log in with another identity service. Thanks! This is a longer string!
+  ]]>
+  </string>
 </resources>

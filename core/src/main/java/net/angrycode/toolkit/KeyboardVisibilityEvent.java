@@ -47,7 +47,7 @@ public class KeyboardVisibilityEvent {
 
 
                     private final int visibleThreshold = Math.round(
-                            Utils.dip2px(activity, KEYBOARD_VISIBLE_THRESHOLD_DP));
+                            DeviceDimensionsHelper.convertDpToPixel(activity, KEYBOARD_VISIBLE_THRESHOLD_DP));
 
 
                     private boolean wasOpened = false;
@@ -91,7 +91,7 @@ public class KeyboardVisibilityEvent {
 
         View activityRoot = getActivityRoot(activity);
         int visibleThreshold = Math
-                .round(Utils.dip2px(activity, KEYBOARD_VISIBLE_THRESHOLD_DP));
+                .round(DeviceDimensionsHelper.convertDpToPixel(activity, KEYBOARD_VISIBLE_THRESHOLD_DP));
 
 
         activityRoot.getWindowVisibleDisplayFrame(r);
