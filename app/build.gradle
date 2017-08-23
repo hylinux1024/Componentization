@@ -12,8 +12,21 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            //这里配置String常量，可以用BuildConfig类引用
+            buildConfigField "String", "APP_USER", "\"${app_user}\""
+            //这里配置string资源，使用@string可以在manifest等文件中引用
+            resValue "string", "app_key", "${app_key}"
+            resValue "string", "app_secret", "${app_secret}"
+        }
+
+        debug {
+            //这里配置String常量，可以用BuildConfig类引用
+            buildConfigField "String", "APP_USER", "\"${app_user}\""
+            //这里配置string资源，使用@string可以在manifest等文件中引用
+            resValue "string", "app_key", "${app_key}"
+            resValue "string", "app_secret", "${app_secret}"
         }
     }
 }

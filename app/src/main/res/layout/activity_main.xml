@@ -8,21 +8,26 @@
     tools:context="net.angrycode.componentization.MainActivity"
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="0dp">
-
-    <net.angrycode.toolkit.view.SimpleDrawingView
-        android:id="@+id/tv_content"
-        android:layout_width="352dp"
-        android:layout_height="479dp"
-        android:layout_marginBottom="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/feedback_label"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:layout_width="368dp"
+        android:layout_height="495dp"
+        android:text="@string/app_secret"
+        tools:layout_editor_absoluteY="8dp"
+        tools:layout_editor_absoluteX="8dp" />
+    <!--<net.angrycode.toolkit.view.SimpleDrawingView-->
+        <!--android:id="@+id/tv_content"-->
+        <!--android:layout_width="352dp"-->
+        <!--android:layout_height="479dp"-->
+        <!--android:layout_marginBottom="16dp"-->
+        <!--android:layout_marginLeft="16dp"-->
+        <!--android:layout_marginRight="16dp"-->
+        <!--android:layout_marginTop="16dp"-->
+        <!--android:text="@string/feedback_label"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintHorizontal_bias="0.0"-->
+        <!--app:layout_constraintLeft_toLeftOf="parent"-->
+        <!--app:layout_constraintRight_toRightOf="parent"-->
+        <!--app:layout_constraintTop_toTopOf="parent" />-->
 
     <!--<include-->
     <!--android:id="@+id/include"-->

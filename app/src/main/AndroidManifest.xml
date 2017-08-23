@@ -17,6 +17,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <meta-data
+            android:name="app_secret"
+            android:value="@string/app_secret" />
     </application>
 
 </manifest>
