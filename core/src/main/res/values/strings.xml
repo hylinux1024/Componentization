@@ -3,4 +3,6 @@
 
     <string name="error_network">网络好像有点问题哦T_T</string>
     <string name="error_app_not_install">应用未安装</string>
+    <string name="share_format">《%1$s》，链接：%2$s</string>
+    <string name="error_share_fail">分享失败</string>
 </resources>
