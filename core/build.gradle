@@ -1,8 +1,10 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
 
+group='com.github.wecodexyz'
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    buildToolsVersion "25.0.3"
 
     defaultConfig {
         minSdkVersion 14
@@ -27,4 +29,4 @@ dependencies {
     compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
 }
 
-apply from: 'maven-release-aar.gradle'
+//apply from: 'maven-release-aar.gradle'
