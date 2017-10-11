@@ -3,6 +3,7 @@ package net.angrycode.toolkit.view;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
@@ -16,8 +17,8 @@ import net.angrycode.core.R;
 public class CheckedImageView extends AppCompatImageView {
     boolean mChecked = false;
 
-    Drawable mNormalState;
-    Drawable mCheckedState;
+    protected Drawable mNormalState;
+    protected Drawable mCheckedState;
 
     public CheckedImageView(Context context) {
         super(context);
@@ -71,5 +72,11 @@ public class CheckedImageView extends AppCompatImageView {
         } else {
             setImageDrawable(mNormalState);
         }
+    }
+
+    public void setImageDrawableState(@NonNull Drawable checkedState, @NonNull Drawable normalState) {
+        mCheckedState = checkedState;
+        mNormalState = normalState;
+        setChecked(mChecked);
     }
 }
