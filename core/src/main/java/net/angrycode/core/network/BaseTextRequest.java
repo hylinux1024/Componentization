@@ -10,8 +10,11 @@ import java.util.concurrent.Callable;
 import io.reactivex.Flowable;
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
+import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * Network request using rxjava2
@@ -43,6 +46,23 @@ public abstract class BaseTextRequest<T> extends RequestWrapper {
 
     }
 
+    public void request(final OnRequestCallback<T> callback) {
+        request().observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(new Consumer<T>() {
+                    @Override
+                    public void accept(@NonNull T t) throws Exception {
+                        callback.callback(t);
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(@NonNull Throwable throwable) throws Exception {
+                        callback.onError(new Exception(throwable));
+                    }
+                });
+    }
+
+
     @Override
     public boolean isSupportCache() {
         return true;
@@ -51,4 +71,11 @@ public abstract class BaseTextRequest<T> extends RequestWrapper {
     protected abstract T onRequestFinish(String result);
 
     protected abstract T onRequestError(int code, String message);
+
+    public interface OnRequestCallback<T> {
+        void callback(T t);
+
+        void onError(Exception e);
+    }
+
 }

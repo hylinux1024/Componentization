@@ -57,7 +57,7 @@ public abstract class RequestWrapper extends Request {
 
     @Override
     public Pair<Integer, String> doRequest() {
-        Pair<Integer, String> result = new Pair<>(ERROR_NETWORK, "");
+        Pair<Integer, String> result = new Pair<>(ERROR_NETWORK, "network is not connect!");
         okhttp3.Request request = null;
 
         if (getHttpMethod() == HttpMethod.POST) {
@@ -72,6 +72,8 @@ public abstract class RequestWrapper extends Request {
             } else {
                 result = new Pair<>(response.code(), response.message());
             }
+            Log.d("Network", "request url - " + getUrlWithParams());
+            Log.d("Network", "response json - " + result.second);
         } catch (IOException e) {
             Log.e(TAG, e.getMessage());
         }
@@ -103,7 +105,9 @@ public abstract class RequestWrapper extends Request {
         mProxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress(host, port));
     }
 
-    public @Nullable Context getContext() {
+    public
+    @Nullable
+    Context getContext() {
         return mContextRef.get();
     }
 
