@@ -24,6 +24,6 @@
 # hide the original source file name.
 -renamesourcefileattribute SourceFile
 
--keepclassmembers net.angrycode.core.network.*
--keepclassmembers net.angrycode.mvp.*
--keepclassmembers net.angrycode.toolkit.*
+-keep class net.angrycode.core.network.** {*;}
+-keep class net.angrycode.mvp.** {*;}
+-keep class net.angrycode.toolkit.** {*;}

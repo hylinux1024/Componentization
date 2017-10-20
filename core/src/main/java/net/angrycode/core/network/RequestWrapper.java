@@ -75,7 +75,7 @@ public abstract class RequestWrapper extends Request {
             Log.d("Network", "request url - " + getUrlWithParams());
             Log.d("Network", "response json - " + result.second);
         } catch (IOException e) {
-            Log.e(TAG, e.getMessage());
+            Log.e("Network", "" + e.getMessage());
         }
         return result;
     }
