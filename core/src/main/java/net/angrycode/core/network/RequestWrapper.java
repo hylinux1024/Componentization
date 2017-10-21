@@ -22,6 +22,7 @@ import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
 import okhttp3.Response;
+import okhttp3.ResponseBody;
 
 /**
  * OkHttpClient Wrapper
@@ -68,7 +69,12 @@ public abstract class RequestWrapper extends Request {
         try {
             Response response = mClient.newCall(request).execute();
             if (response.isSuccessful()) {
-                result = new Pair<>(response.code(), response.body().string());
+                ResponseBody body = response.body();
+                String content = "";
+                if (body != null) {
+                    content = body.string();
+                }
+                result = new Pair<>(response.code(), content);
             } else {
                 result = new Pair<>(response.code(), response.message());
             }
@@ -105,9 +111,7 @@ public abstract class RequestWrapper extends Request {
         mProxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress(host, port));
     }
 
-    public
-    @Nullable
-    Context getContext() {
+    public @Nullable Context getContext() {
         return mContextRef.get();
     }
 
