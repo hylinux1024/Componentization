@@ -1,4 +1,4 @@
-package net.angrycode.toolkit.view;
+package net.angrycode.toolkit.widget;
 
 import android.content.Context;
 import android.graphics.Color;

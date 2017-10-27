@@ -1,4 +1,4 @@
-package net.angrycode.toolkit.view;
+package net.angrycode.toolkit.widget;
 
 import android.annotation.TargetApi;
 import android.content.Context;

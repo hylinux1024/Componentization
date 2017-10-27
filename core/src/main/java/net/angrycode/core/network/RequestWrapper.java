@@ -19,6 +19,7 @@ import okhttp3.CookieJar;
 import okhttp3.FormBody;
 import okhttp3.HttpUrl;
 import okhttp3.Interceptor;
+import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
 import okhttp3.Response;
@@ -78,11 +79,12 @@ public abstract class RequestWrapper extends Request {
             } else {
                 result = new Pair<>(response.code(), response.message());
             }
-            Log.d("Network", "request url - " + getUrlWithParams());
-            Log.d("Network", "response json - " + result.second);
+
         } catch (IOException e) {
-            Log.e("Network", "" + e.getMessage());
+            Log.d(TAG, "" + e.getMessage());
         }
+        Log.d(TAG, "request url - " + getUrlWithParams());
+        Log.d(TAG, "response result - " + result.second);
         return result;
     }
 
@@ -90,7 +92,7 @@ public abstract class RequestWrapper extends Request {
         return code >= 200 && code < 300;
     }
 
-    private RequestBody requestBody() {
+    protected RequestBody requestBody() {
         FormBody.Builder builder = new FormBody.Builder();
         for (String key : mParams.keySet()) {
             builder.add(key, mParams.get(key));
@@ -111,7 +113,9 @@ public abstract class RequestWrapper extends Request {
         mProxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress(host, port));
     }
 
-    public @Nullable Context getContext() {
+    public
+    @Nullable
+    Context getContext() {
         return mContextRef.get();
     }
 

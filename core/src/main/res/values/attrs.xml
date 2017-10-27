@@ -13,4 +13,7 @@
         <!--清除按钮图标-->
         <attr name="quickClearIcon" format="reference" />
     </declare-styleable>
+    <declare-styleable name="TintableImageView">
+        <attr name="tintColor" format="reference|color" />
+    </declare-styleable>
 </resources>

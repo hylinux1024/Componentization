@@ -2,29 +2,9 @@ package net.angrycode.componentization;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.TextView;
 
 import net.angrycode.core.network.SimpleTextRequest;
-import net.angrycode.data.*;
-import net.angrycode.data.repository.Data;
-import net.angrycode.data.repository.RepositoryFactory;
-import net.angrycode.data.repository.local.LocalRepository;
-import net.angrycode.data.repository.remote.RemoteRepository;
-import net.angrycode.toolkit.view.SimpleDrawingView;
-
-import org.reactivestreams.Publisher;
-
-import java.util.List;
-import java.util.concurrent.Callable;
-
-import io.reactivex.Flowable;
-import io.reactivex.Scheduler;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.annotations.NonNull;
-import io.reactivex.functions.Consumer;
-import io.reactivex.functions.Function;
-import io.reactivex.schedulers.Schedulers;
 
 public class MainActivity extends AppCompatActivity {
 

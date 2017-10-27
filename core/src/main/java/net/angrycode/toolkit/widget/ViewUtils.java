@@ -1,4 +1,4 @@
-package net.angrycode.toolkit.view;
+package net.angrycode.toolkit.widget;
 
 import android.app.Activity;
 import android.content.Context;

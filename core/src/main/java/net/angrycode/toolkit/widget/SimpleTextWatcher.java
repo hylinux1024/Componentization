@@ -1,4 +1,4 @@
-package net.angrycode.toolkit.view;
+package net.angrycode.toolkit.widget;
 
 import android.text.Editable;
 import android.text.TextWatcher;

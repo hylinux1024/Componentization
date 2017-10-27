@@ -16,11 +16,11 @@ import java.io.File;
 public class PhoneUtils {
     /**
      * <uses-permission android:name="android.permission.CALL_PHONE" />
-     *
+     * do not use it
      * @param context
      * @param phoneNumber
      */
-    public static void call(Context context, String phoneNumber) {
+    private static void call(Context context, String phoneNumber) {
         Intent callIntent = new Intent(Intent.ACTION_CALL);
         callIntent.setData(Uri.parse("tel:" + phoneNumber));
         if (callIntent.resolveActivity(context.getPackageManager()) != null) {

@@ -72,10 +72,6 @@ public abstract class BaseTextRequest<T> extends RequestWrapper {
 
     protected abstract T onRequestError(int code, String message);
 
-    public interface OnRequestCallback<T> {
-        void callback(T t);
 
-        void onError(Exception e);
-    }
 
 }
